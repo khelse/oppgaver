@@ -1,11 +1,12 @@
-<h1 id="oppgave">Oppgave</h1>
-<p>Kilde til data for oppgaven ligger i en SQLite databasen som heter <strong>oppgave.db</strong>. Databasen inneholder 3 tabeller:</p>
+<h1 id="infomasjon">Infomasjon</h1>
+<p>Kilde til data for oppgaven ligger i en SQLite databasen som heter <strong>data.db</strong>. Filen kan lastes ned <a href="https://github.com/khelse/oppgaver/raw/main/data.db" title="databasen">her</a>.</p>
+<p>Databasen inneholder 3 tabeller:</p>
 <ul>
 <li><em>data2020</em> : Data for kommuner i 2020</li>
 <li><em>data2021</em> : Data for kommuner i 2021</li>
-<li><em>tblCode</em> : Kodebok</li>
+<li><em>tblCode</em> : Kodebok for omkoding av kjønn</li>
 </ul>
-<p>Disse kolonner finnes i dataene for kommuner:</p>
+<p>Disse kolonner finnes i dataene for kommuner dvs. <em>data2020</em> og <em>data2021</em>:</p>
 <ul>
 <li><em>GEO</em> : Geografisk koder for kommuner. Manglende kode er kodet som <em>9999</em></li>
 <li><em>AAR</em> : Årgang for data innsamling</li>
@@ -13,15 +14,23 @@
 <li><em>KJONN</em> : Kjønn for personer</li>
 <li><em>ANTALL</em> : Antall personer med samme ALDER og KJONN per GEO og AAR</li>
 </ul>
-<p>Tabell for å koble geografiske koder finnes hos SSB som kan lastes ned som <em>csv</em> fil her <a href="https://www.ssb.no/klass/klassifikasjoner/127/versjon/1159/korrespondanser/454">https://www.ssb.no/klass/klassifikasjoner/127/versjon/1159/korrespondanser/454</a>.</p>
-<p>Hvis du bruker R, kan <em>norgeo</em> pakken brukes for å hente kodene direkte:</p>
+<p>Tabell for å koble geografiske koder finnes hos SSB som kan lastes ned som <em>csv</em> fil fra denne URL-en:</p>
+<p><a href="https://www.ssb.no/klass/klassifikasjoner/127/versjon/1159/korrespondanser/454">https://www.ssb.no/klass/klassifikasjoner/127/versjon/1159/korrespondanser/454</a>.</p>
+<p>Hvis du bruker R, kan <em>norgeo</em> pakken brukes for å hente data direkte istedenfor å laste ned <em>csv</em> filen:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;norgeo&quot;</span>)</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="kw">library</span>(norgeo)</span>
 <span id="cb1-3"><a href="#cb1-3"></a>geoKode &lt;-<span class="st"> </span><span class="kw">get_correspond</span>(<span class="st">&quot;fylke&quot;</span>, <span class="st">&quot;kommune&quot;</span>)</span></code></pre></div>
-<p>URL-en nedenfor beskriver hvordan <em>get_correspond()</em> fungerer <a href="https://helseprofil.github.io/norgeo/reference/get_correspond.html">https://helseprofil.github.io/norgeo/reference/get_correspond.html</a></p>
-<p>Bruk analyse verktøy du kan best for å løse disse oppgavene:</p>
+<p>Hvis du vil lese hvordan <em>get_correspond()</em> fungerer så finnes beskrivelsen her:</p>
+<p><a href="https://helseprofil.github.io/norgeo/reference/get_correspond.html">https://helseprofil.github.io/norgeo/reference/get_correspond.html</a></p>
+<h1 id="tips">Tips</h1>
+<ul>
+<li>For R bruker, <a href="https://dbi.r-dbi.org/">DBI</a> pakke kan brukes til å hente data fra databasen, evt. bruk liknende pakke du er kjent med.</li>
+<li>Fylkekoder fra SSB må kobles til ved bruk av kommunekoder som koblingsid.</li>
+</ul>
+<h1 id="oppgaven">Oppgaven</h1>
+<p>Bruk analyseverktøy du kjenner best for å løse disse oppgavene:</p>
 <ol type="1">
 <li>Hvor mange menn og kvinner som finnes i datasettet?</li>
-<li>Hvor mange fylker finnes i datasettet? Tips: Fylkekoder fra SSB må kobles til ved bruk av kommunekoder som koblingsid.</li>
+<li>Hvor mange fylker finnes i datasettet?</li>
 <li>Hvor mange personer som er 19 år i Agder fylke (kode 42)?</li>
 </ol>

@@ -1,0 +1,27 @@
+<h1 id="oppgave">Oppgave</h1>
+<p>Kilde til data for oppgaven ligger i en SQLite databasen som heter <strong>oppgave.db</strong>. Databasen inneholder 3 tabeller:</p>
+<ul>
+<li><em>data2020</em> : Data for kommuner i 2020</li>
+<li><em>data2021</em> : Data for kommuner i 2021</li>
+<li><em>tblCode</em> : Kodebok</li>
+</ul>
+<p>Disse kolonner finnes i dataene for kommuner:</p>
+<ul>
+<li><em>GEO</em> : Geografisk koder for kommuner. Manglende kode er kodet som <em>9999</em></li>
+<li><em>AAR</em> : Årgang for data innsamling</li>
+<li><em>ALDER</em> : Alder for personer</li>
+<li><em>KJONN</em> : Kjønn for personer</li>
+<li><em>ANTALL</em> : Antall personer med samme ALDER og KJONN per GEO og AAR</li>
+</ul>
+<p>Tabell for å koble geografiske koder finnes hos SSB som kan lastes ned som <em>csv</em> fil her <a href="https://www.ssb.no/klass/klassifikasjoner/127/versjon/1159/korrespondanser/454">https://www.ssb.no/klass/klassifikasjoner/127/versjon/1159/korrespondanser/454</a>.</p>
+<p>Hvis du bruker R, kan <em>norgeo</em> pakken brukes for å hente kodene direkte:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;norgeo&quot;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">library</span>(norgeo)</span>
+<span id="cb1-3"><a href="#cb1-3"></a>geoKode &lt;-<span class="st"> </span><span class="kw">get_correspond</span>(<span class="st">&quot;fylke&quot;</span>, <span class="st">&quot;kommune&quot;</span>)</span></code></pre></div>
+<p>URL-en nedenfor beskriver hvordan <em>get_correspond()</em> fungerer <a href="https://helseprofil.github.io/norgeo/reference/get_correspond.html">https://helseprofil.github.io/norgeo/reference/get_correspond.html</a></p>
+<p>Bruk analyse verktøy du kan best for å løse disse oppgavene:</p>
+<ol type="1">
+<li>Hvor mange menn og kvinner som finnes i datasettet?</li>
+<li>Hvor mange fylker finnes i datasettet? Tips: Fylkekoder fra SSB må kobles til ved bruk av kommunekoder som koblingsid.</li>
+<li>Hvor mange personer som er 19 år i Agder fylke (kode 42)?</li>
+</ol>
